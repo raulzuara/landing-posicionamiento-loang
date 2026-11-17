@@ -7,9 +7,9 @@
 <meta name="description" content="Posicionamos tu propia web en Google para tus servicios en tu provincia y 8 localidades. Compromiso por escrito: primera página en 45 días. 79 € + IVA al mes, sin permanencia.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 36 36%27%3E%3Crect width=%2736%27 height=%2736%27 rx=%279%27 fill=%27%23F26B1D%27/%3E%3Cpath d=%27M19.5 7 11 20h6l-1.5 9L25 16h-6l.5-9z%27 fill=%27%23fff%27/%3E%3C/svg%3E">
-<!-- ===== [ETIQUETA GOOGLE ADS] Pega aquí la etiqueta global (gtag.js) de Google Ads: AW-XXXXXXXXX ===== -->
-<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-XXXXXXXXX');</script> -->
+<!-- Google tag (gtag.js) - Google Ads AW-18578730589 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18578730589"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-18578730589');</script>
 <style>
 :root{--o:#F26B1D;--o2:#FF8A3D;--od:#D9530A;--ink:#1B1B1F;--mut:#5B5E66;--bg:#FFF8F3;--line:#F1E3D8;--ok:#1E9E5A;--r:16px}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -481,9 +481,8 @@ const ENDPOINT_FORMULARIO = '';
 
 // Guarda gclid y UTM para atribuir el lead a la campaña
 (function(){var p=new URLSearchParams(location.search);var g=document.getElementById('f-gclid');if(g)g.value=p.get('gclid')||'';var u=[];['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){if(p.get(k))u.push(k+'='+p.get(k))});document.getElementById('f-utm').value=u.join('&');})();
-// [CONVERSIÓN GOOGLE ADS]: sustituir AW-XXXXXXXXX/ETIQUETA por los valores reales de cada acción de conversión
-function conv(label){if(typeof gtag==='function'){gtag('event','conversion',{'send_to':'AW-XXXXXXXXX/'+label});}}
-document.querySelectorAll('[data-ev]').forEach(function(a){a.addEventListener('click',function(){conv('[ETIQUETA_LLAMADA]');});});
+// Conversión Google Ads «Formulario estudio gratuito»: solo tras success "true" de FormSubmit
+function conv(){if(typeof gtag==='function'){gtag('event','conversion',{'send_to':'AW-18578730589/OU6YCLn_orodEN3cg5tF'});}}
 
 // Teléfono: se aceptan espacios, guiones, puntos, paréntesis y prefijo +34; basta con 9 dígitos o más
 (function(){var t=document.getElementById('f-tel');t.addEventListener('input',function(){t.setCustomValidity('');});})();
@@ -528,7 +527,7 @@ document.getElementById('leadform').addEventListener('submit',function(e){
    var j={};try{j=JSON.parse(t);}catch(x){}
    // FormSubmit responde HTTP 200 también cuando falla: hay que mirar "success"
    if(String(j.success)!=='true'){throw new Error(j.message||'Respuesta no válida');}
-   clearTimeout(lento);conv('[ETIQUETA_FORMULARIO]');ok.style.display='block';f.reset();btn.innerHTML=txtBtn;
+   clearTimeout(lento);conv();ok.style.display='block';f.reset();btn.innerHTML=txtBtn;
  }).catch(function(x){
    if(window.console)console.warn('Envío del formulario no completado:',x&&x.message);
    clearTimeout(lento);btn.disabled=false;btn.innerHTML=txtBtn;err.style.display='block';
