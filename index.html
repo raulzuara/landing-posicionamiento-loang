@@ -514,10 +514,11 @@ document.getElementById('leadform').addEventListener('submit',function(e){
   _template:'table',_captcha:'false',
   mensaje:'Nueva solicitud de estudio gratuito de posicionamiento web (79 € + IVA/mes):\n\n'+cuerpo
  },datos);
- btn.disabled=true;btn.innerHTML='Enviando… un momento';ok.style.display='none';err.style.display='none';
+ btn.disabled=true;btn.innerHTML='Enviando… un momento';
+ var lento=setTimeout(function(){btn.innerHTML='Enviando… puede tardar unos segundos';},8000);ok.style.display='none';err.style.display='none';
  var post=function(url){
   var ctl=('AbortController' in window)?new AbortController():null;
-  var tm=setTimeout(function(){if(ctl)ctl.abort();},45000); // FormSubmit puede tardar 10-20 s
+  var tm=setTimeout(function(){if(ctl)ctl.abort();},90000); // FormSubmit puede tardar 10-40 s
   return fetch(url,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload),signal:ctl?ctl.signal:undefined})
    .then(function(r){clearTimeout(tm);if(!r.ok)throw new Error('HTTP '+r.status);return r.text();});
  };
@@ -527,10 +528,10 @@ document.getElementById('leadform').addEventListener('submit',function(e){
    var j={};try{j=JSON.parse(t);}catch(x){}
    // FormSubmit responde HTTP 200 también cuando falla: hay que mirar "success"
    if(String(j.success)!=='true'){throw new Error(j.message||'Respuesta no válida');}
-   conv('[ETIQUETA_FORMULARIO]');ok.style.display='block';f.reset();btn.innerHTML=txtBtn;
+   clearTimeout(lento);conv('[ETIQUETA_FORMULARIO]');ok.style.display='block';f.reset();btn.innerHTML=txtBtn;
  }).catch(function(x){
    if(window.console)console.warn('Envío del formulario no completado:',x&&x.message);
-   btn.disabled=false;btn.innerHTML=txtBtn;err.style.display='block';
+   clearTimeout(lento);btn.disabled=false;btn.innerHTML=txtBtn;err.style.display='block';
  });
 });
 </script>
