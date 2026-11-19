@@ -485,6 +485,9 @@ const ENDPOINT_FORMULARIO = '';
 (function(){var p=new URLSearchParams(location.search);var g=document.getElementById('f-gclid');if(g)g.value=p.get('gclid')||'';var u=[];['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){if(p.get(k))u.push(k+'='+p.get(k))});document.getElementById('f-utm').value=u.join('&');})();
 // Conversión Google Ads «Formulario estudio gratuito»: solo tras success "true" de FormSubmit
 function conv(){if(typeof gtag==='function'){gtag('event','conversion',{'send_to':'AW-18578730589/OU6YCLn_orodEN3cg5tF'});}}
+// Conversión Google Ads «Clic en teléfono (landing)» (ID 7909303127): pegar aquí la etiqueta 'AW-18578730589/XXXX' del fragmento de evento de esa acción. Vacío = no se envía nada.
+var ETIQUETA_TEL='';
+document.addEventListener('click',function(e){var el=e.target.closest&&e.target.closest('a[href^="tel:"]');if(el&&ETIQUETA_TEL&&typeof gtag==='function'){gtag('event','conversion',{'send_to':ETIQUETA_TEL});}});
 
 // Teléfono: se aceptan espacios, guiones, puntos, paréntesis y prefijo +34; basta con 9 dígitos o más
 (function(){var t=document.getElementById('f-tel');t.addEventListener('input',function(){t.setCustomValidity('');});})();
