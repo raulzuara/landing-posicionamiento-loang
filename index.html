@@ -32,8 +32,6 @@ a{color:inherit}
 .logo small{display:block;font-size:11px;color:var(--o);font-weight:700;letter-spacing:.4px;text-transform:uppercase;line-height:1}
 .top-cta{display:flex;gap:10px}
 .top-cta .btn{padding:10px 16px;font-size:15px}
-.tel-top{display:none!important}
-@media(min-width:720px){.tel-top{display:inline-flex!important}}
 .hide-m{display:none}
 .only-m{display:flex}
 @media(max-width:400px){.logo small{display:none}}
@@ -186,8 +184,8 @@ footer .fb{font-size:12.5px;color:#C8C8D0}
 footer .fl{margin-top:8px}
 footer a{color:#E6E6EA}
 /* sticky mobile */
-.mbar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:1fr 1.4fr;gap:8px;padding:10px;background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(0,0,0,.08)}
-.mbar .btn{padding:13px 10px;font-size:15px}
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:1fr;padding:10px;background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(0,0,0,.08)}
+.mbar .btn{padding:13px 10px;font-size:15px;width:100%;box-sizing:border-box;justify-content:center}
 @media(min-width:720px){
  h1{font-size:48px}
  .inc{grid-template-columns:repeat(2,1fr)}
@@ -226,8 +224,6 @@ footer a{color:#E6E6EA}
    <img src="logo-grupo-loang.png" alt="Grupo Loang - Enciende tu empresa" width="193" height="44" class="logo-img">
   </a>
   <div class="top-cta">
-   <a class="btn btn-g hide-m tel-top" href="tel:+34917288540" data-ev="llamada">
-    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>917 28 85 40</a>
    <a class="btn btn-o" href="#form"><span class="hide-m">Quiero mi estudio gratis</span><span class="only-m">Estudio gratis</span></a>
   </div>
  </div>
@@ -283,7 +279,7 @@ footer a{color:#E6E6EA}
     <label class="legal-c"><input type="checkbox" name="privacidad" required> <span>Acepto la <a href="https://grupoloang.es/politica-de-privacidad/" target="_blank" rel="noopener nofollow">política de privacidad</a> y que Grupo Loang me llame para presentarme el estudio.</span></label>
     <button class="btn btn-o" type="submit">Quiero mi estudio gratis →</button>
     <div class="ok-msg" id="okmsg">¡Recibido! En menos de 24 horas laborables te llamamos.</div>
-    <div class="ok-msg" id="errmsg" style="background:#FDECEC;border-color:#F5C2C2;color:#8A1F1F">No hemos podido enviar tus datos. Llámanos al <a href="tel:+34917288540">917 28 85 40</a> o inténtalo de nuevo.</div>
+    <div class="ok-msg" id="errmsg" style="background:#FDECEC;border-color:#F5C2C2;color:#8A1F1F">No se ha podido enviar. Inténtalo de nuevo en unos minutos.</div>
    </form>
   </div>
  </div>
@@ -459,7 +455,7 @@ footer a{color:#E6E6EA}
 
 <footer id="legal">
  <div class="w">
-  <p class="fb"><b>Grupo Loang</b> · Enciende tu empresa · Loang Ediciones S.L. · NIF B84431519 · C/ Andrés Torrejón, 13, Local C, 28931 Móstoles (Madrid) · <a href="tel:+34917288540">917 28 85 40</a></p>
+  <p class="fb"><b>Grupo Loang</b> · Enciende tu empresa · Loang Ediciones S.L. · NIF B84431519 · C/ Andrés Torrejón, 13, Local C, 28931 Móstoles (Madrid)</p>
   <p><b>Condiciones básicas de la oferta.</b> 79 € + IVA (21 %) al mes por web (95,59 € con IVA), sin permanencia. El compromiso de aparecer entre los 10 primeros resultados de Google en un plazo de 30 días, con más de 8 frases del negocio bien posicionadas, se refiere a los resultados orgánicos (no anuncios) para las frases acordadas por escrito al inicio (servicios, provincia y localidades del cliente) y se cuenta desde el acceso a la web y la aprobación de esas frases. Renovación mensual automática; periódicamente contactamos con el cliente para revisar resultados y confirmar si desea continuar. Grupo Loang no está afiliado a Google LLC.</p>
   <p><b>Protección de datos.</b> Responsable: Loang Ediciones S.L. Finalidad: atender tu solicitud y contactarte sobre este servicio. Legitimación: tu consentimiento. Los datos no se comunicarán a terceros salvo obligación legal. Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad en <a href="mailto:angelgl@grupoloang.com">angelgl@grupoloang.com</a> o en C/ Andrés Torrejón, 13, 28931 Móstoles (Madrid).</p>
   <p class="fl"><a href="https://grupoloang.es/aviso-legal/" rel="nofollow">Aviso legal</a> · <a href="https://grupoloang.es/politica-de-privacidad/" rel="nofollow">Política de privacidad</a> · <a href="https://grupoloang.es/politica-de-cookies" rel="nofollow">Política de cookies</a> · © 2026 Grupo Loang</p>
@@ -467,7 +463,6 @@ footer a{color:#E6E6EA}
 </footer>
 
 <div class="mbar">
- <a class="btn btn-g" href="tel:+34917288540" data-ev="llamada">Llamar</a>
  <a class="btn btn-o" href="#form">Estudio gratis</a>
 </div>
 
@@ -490,9 +485,6 @@ const AVISO_LEAD_URL = 'https://aviso-lead-loang.onrender.com/api/aviso-lead';
 (function(){var p=new URLSearchParams(location.search);var g=document.getElementById('f-gclid');if(g)g.value=p.get('gclid')||'';var u=[];['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){if(p.get(k))u.push(k+'='+p.get(k))});document.getElementById('f-utm').value=u.join('&');})();
 // Conversión Google Ads «Formulario estudio gratuito»: solo tras success "true" de FormSubmit
 function conv(){if(typeof gtag==='function'){gtag('event','conversion',{'send_to':'AW-18578730589/OU6YCLn_orodEN3cg5tF'});}}
-// Conversión Google Ads «Clic en teléfono (landing)» (ID 7909303127): pegar aquí la etiqueta 'AW-18578730589/XXXX' del fragmento de evento de esa acción. Vacío = no se envía nada.
-var ETIQUETA_TEL='AW-18578730589/eevOCNfGubsdEN3cg5tF';
-document.addEventListener('click',function(e){var el=e.target.closest&&e.target.closest('a[href^="tel:"]');if(el&&ETIQUETA_TEL&&typeof gtag==='function'){gtag('event','conversion',{'send_to':ETIQUETA_TEL});}});
 
 // Teléfono: se aceptan espacios, guiones, puntos, paréntesis y prefijo +34; basta con 9 dígitos o más
 (function(){var t=document.getElementById('f-tel');t.addEventListener('input',function(){t.setCustomValidity('');});})();
