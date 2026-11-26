@@ -263,6 +263,10 @@ footer a{color:#E6E6EA}
    <p class="s">En 24 horas laborables te decimos si podemos posicionar tu web y cómo lo haríamos. Sin compromiso.</p>
    <!-- El envío lo hace el script del final: email al equipo (CORREO_EQUIPO) y, opcionalmente, un webhook (ENDPOINT_FORMULARIO). -->
    <form class="form" id="leadform" method="POST" novalidate>
+    <div class="hp" aria-hidden="true" style="position:absolute;left:-9999px;top:auto;height:0;width:0;overflow:hidden">
+     <label for="f-website">Website</label>
+     <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+    </div>
     <label for="f-nombre">Nombre</label>
     <input id="f-nombre" name="nombre" autocomplete="name" required placeholder="Tu nombre">
     <label for="f-tel">Teléfono</label>
@@ -480,6 +484,7 @@ footer a{color:#E6E6EA}
 ==================================================================== */
 const CORREO_EQUIPO = 'raul.zuara@gmail.com';
 const ENDPOINT_FORMULARIO = '';
+const AVISO_LEAD_URL = 'https://aviso-lead-loang.onrender.com/api/aviso-lead';
 
 // Guarda gclid y UTM para atribuir el lead a la campaña
 (function(){var p=new URLSearchParams(location.search);var g=document.getElementById('f-gclid');if(g)g.value=p.get('gclid')||'';var u=[];['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){if(p.get(k))u.push(k+'='+p.get(k))});document.getElementById('f-utm').value=u.join('&');})();
@@ -528,6 +533,16 @@ document.getElementById('leadform').addEventListener('submit',function(e){
  };
  // Respaldo opcional a webhook/CRM (no bloquea ni cambia el mensaje al usuario)
  if(ENDPOINT_FORMULARIO){post(ENDPOINT_FORMULARIO).catch(function(){});}
+ // Aviso en segundo plano (solo nombre y ciudad). No bloquea ni sustituye FormSubmit.
+ var aviso=function(){
+  var ctl=('AbortController' in window)?new AbortController():null;
+  var tm=setTimeout(function(){if(ctl)ctl.abort();},4000);
+  var hp=f.elements['website'];
+  fetch(AVISO_LEAD_URL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({nombre:datos['Nombre']||'',ciudad:datos['Provincia']||'',website:hp&&hp.value||''}),keepalive:true,signal:ctl?ctl.signal:undefined})
+   .catch(function(){})
+   .then(function(){clearTimeout(tm);});
+ };
+ if(AVISO_LEAD_URL){aviso();}
  post('https://formsubmit.co/ajax/'+encodeURIComponent(CORREO_EQUIPO)).then(function(t){
    var j={};try{j=JSON.parse(t);}catch(x){}
    // FormSubmit responde HTTP 200 también cuando falla: hay que mirar "success"
